@@ -1,0 +1,84 @@
+/* Demo Contracting Ltd — custom layer on top of the Homi template. */
+
+/* ---- Entrance animations (Elementor's JS normally sets duration/fill) ---- */
+.animated{animation-duration:.8s;animation-fill-mode:both}
+
+/* ---- Skip link ---- */
+.skip-link{position:absolute;left:-9999px}
+.skip-link:focus{left:8px;top:8px;background:#fff;padding:8px 14px;z-index:100000}
+
+/* ---- Mobile offcanvas menu (drives ElementsKit markup without its JS) ---- */
+@media (max-width:1024px){
+  .ekit_menu_responsive_tablet .elementskit-menu-hamburger{display:inline-flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+  .ekit_menu_responsive_tablet .elementskit-menu-hamburger-icon{width:26px;height:2px;background:currentColor;display:block}
+  #ekit-megamenu-menu-1{position:fixed;top:0;right:0;height:100%;width:300px;max-width:85vw;background:#101820;transform:translateX(100%);transition:transform .3s ease;z-index:99999;overflow-y:auto;padding:24px}
+  .ltk-nav-open #ekit-megamenu-menu-1{transform:translateX(0)}
+  #ekit-megamenu-menu-1 .elementskit-navbar-nav{display:block}
+  #ekit-megamenu-menu-1 .elementskit-navbar-nav>li>a{display:flex;justify-content:space-between;align-items:center;padding:12px 0;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+  #ekit-megamenu-menu-1 .elementskit-dropdown{display:none;padding-left:14px}
+  #ekit-megamenu-menu-1 .ltk-sub-open>.elementskit-dropdown{display:block}
+  #ekit-megamenu-menu-1 .elementskit-dropdown a{display:block;padding:8px 0;color:#c9d2da}
+  .elementskit-menu-close{position:absolute;top:12px;right:14px;background:none;border:0;color:#fff;font-size:22px;cursor:pointer}
+  .ekit-nav-menu--overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s;z-index:99998}
+  .ltk-nav-open .ekit-nav-menu--overlay{opacity:1;visibility:visible}
+  body.ltk-noscroll{overflow:hidden}
+}
+@media (min-width:1025px){
+  .elementskit-menu-hamburger,.elementskit-nav-identity-panel,.ekit-nav-menu--overlay{display:none}
+}
+
+/* ---- Newsletter form ---- */
+.ltk-newsletter{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}
+.ltk-newsletter input{flex:1 1 160px;min-width:0;padding:12px 14px;border:1px solid rgba(255,255,255,.2);border-radius:6px;background:rgba(255,255,255,.06);color:#fff}
+.ltk-newsletter .elementskit-btn{cursor:pointer;border:0}
+
+/* ---- Generic page hero (inner pages) ---- */
+.ltk-page-hero{background:#101820;color:#fff;padding:120px 0 70px;text-align:center}
+.ltk-page-hero h1{font-size:clamp(2rem,4vw,3rem);margin:0 0 10px}
+.ltk-page-hero .ltk-crumb{color:#f2792b;font-weight:600}
+.ltk-page-hero .ltk-crumb a{color:#c9d2da;text-decoration:none}
+.ltk-section{padding:80px 0}
+.ltk-container{max-width:1200px;margin:0 auto;padding:0 20px}
+.ltk-grid{display:grid;gap:30px}
+.ltk-grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.ltk-grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+
+/* ---- Form messages ---- */
+.ltk-alert{padding:14px 18px;border-radius:8px;margin-bottom:18px}
+.ltk-alert.ok{background:#e6f7ec;color:#116a35;border:1px solid #b6e6c6}
+.ltk-alert.err{background:#fdecec;color:#8a1f1f;border:1px solid #f3c3c3}
+.ltk-field{margin-bottom:16px}
+.ltk-field label{display:block;font-weight:600;margin-bottom:6px}
+.ltk-field input,.ltk-field textarea,.ltk-field select{width:100%;padding:12px 14px;border:1px solid #dfe3e8;border-radius:8px;font:inherit}
+.ltk-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+
+/* ---- FAQ accordion (guarantee collapse works even if vendor CSS differs) ---- */
+.elementskit-accordion .collapse{display:none}
+.elementskit-accordion .collapse.show{display:block}
+.elementskit-card .ekit_accordion_active_icon{display:none}
+.elementskit-card.active .ekit_accordion_active_icon{display:inline-block}
+.elementskit-card.active .ekit_accordion_normal_icon{display:none}
+
+/* ---- Video popup lightbox ---- */
+.ltk-video-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100001;display:flex;align-items:center;justify-content:center;padding:20px}
+.ltk-video-box{position:relative;width:min(900px,100%)}
+.ltk-video-frame{position:relative;padding-bottom:56.25%;height:0}
+.ltk-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border-radius:10px}
+.ltk-video-close{position:absolute;top:-42px;right:0;background:none;border:0;color:#fff;font-size:34px;cursor:pointer;line-height:1}
+
+/* ========================================================================
+   ADMIN EDIT MODE
+   ======================================================================== */
+#ltk-adminbar{position:fixed;top:0;left:0;right:0;height:44px;background:#12181f;color:#fff;display:flex;align-items:center;gap:16px;padding:0 18px;z-index:100002;font:14px/1 system-ui,sans-serif}
+#ltk-adminbar .ltk-ab-brand{font-weight:700;color:#f2792b}
+#ltk-adminbar .ltk-ab-user{opacity:.7;margin-right:auto}
+#ltk-adminbar .ltk-ab-link{color:#fff;text-decoration:none;padding:7px 14px;border:1px solid rgba(255,255,255,.25);border-radius:6px}
+#ltk-adminbar .ltk-ab-link:hover{background:rgba(255,255,255,.12)}
+body:has(#ltk-adminbar){padding-top:44px}
+
+.ltk-editable{position:relative}
+.ltk-edit{position:absolute;width:0;height:0;overflow:hidden}
+body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.7);outline-offset:-2px}
+
+.ltk-pencil{position:absolute;z-index:100000;width:40px;height:40px;border-radius:50%;background:#f2792b;color:#fff!important;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3);font-size:18px;transition:transform .12s}
+.ltk-pencil:hover{transform:scale(1.1);background:#e06a1f}

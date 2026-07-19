@@ -1,0 +1,32 @@
+<?php
+/**
+ * Demo Contracting Ltd — site configuration.
+ *
+ * This file lives OUTSIDE the web docroot (public/). Keep your real
+ * database credentials here on the server. A stale copy of this file must
+ * never fatal the site, so every constant it *could* be missing also has a
+ * fallback defined in app/db.php — add new constants there too.
+ */
+
+// ---- Database (edit these on the server) ----------------------------------
+if (!defined('DB_HOST')) define('DB_HOST', 'localhost');
+if (!defined('DB_NAME')) define('DB_NAME', 'homedemo');
+if (!defined('DB_USER')) define('DB_USER', 'homedemo');
+if (!defined('DB_PASS')) define('DB_PASS', '');
+if (!defined('DB_CHARSET')) define('DB_CHARSET', 'utf8mb4');
+
+// ---- Site constants -------------------------------------------------------
+// Obscure the admin folder by renaming public/admin/ and changing this to match.
+if (!defined('ADMIN_DIR'))     define('ADMIN_DIR', 'admin');
+if (!defined('SESSION_NAME'))  define('SESSION_NAME', 'homedemo_sess');
+
+// Uploads: filesystem dir (inside docroot so images are served) + public URL.
+if (!defined('UPLOAD_DIR'))    define('UPLOAD_DIR', __DIR__ . '/../public/assets/uploads');
+if (!defined('UPLOAD_URL'))    define('UPLOAD_URL', 'assets/uploads');
+
+// Business fallback identity (Settings table overrides these at runtime).
+if (!defined('SITE_NAME'))     define('SITE_NAME', 'Demo Contracting Ltd');
+if (!defined('SITE_EMAIL'))    define('SITE_EMAIL', 'info@homedemo.prairiewebdesign.ca');
+
+// Set true on production to force https canonical URLs in the SEO pack.
+if (!defined('FORCE_HTTPS'))   define('FORCE_HTTPS', false);
