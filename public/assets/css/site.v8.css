@@ -1,4 +1,4 @@
-/* Demo Contracting Ltd — custom layer on top of the Homi template. */
+/* Demo Contracting Ltd — custom site styles. */
 
 /* ---- Entrance animations (Elementor's JS normally sets duration/fill) ---- */
 .animated{animation-duration:.8s;animation-fill-mode:both}
@@ -255,7 +255,7 @@ body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.
    FEEDBACK ROUND 4 (verified live at desktop width)
    ======================================================================== */
 
-/* Features blue box (241161a3) had margin-left:-200px from the template,
+/* Features blue box (241161a3) had a -200px left margin baked into the layout,
    pulling it over the heading at desktop width. Kill the negative margins. */
 .elementor-1232 .elementor-element-241161a3,
 .elementor-1232 .elementor-element-78940fcb{margin-left:0!important;margin-right:0!important;margin-top:0!important}
