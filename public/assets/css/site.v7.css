@@ -279,3 +279,34 @@ body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.
 .elementor-element-90f95a5 .ekit-heading--title span span,
 .elementor-element-276b2e3b .ekit-heading--title span span{color:#5aa9f0!important}
 .elementor-element-90f95a5 .elementor-icon-list-icon svg{fill:#f2792b}
+
+/* ========================================================================
+   FEEDBACK ROUND 6: mobile nav (verified live at 375px).
+   ElementsKit's offcanvas JS isn't loaded, and its responsive CSS fought our
+   panel (left it half-open, invisible hamburger, collapsed submenus). These
+   decisive overrides make it hide off-screen, slide in on tap, and expand.
+   ======================================================================== */
+@media (max-width:1024px){
+  /* offcanvas panel: fully hidden to the right; slides in when open */
+  #ekit-megamenu-menu-1.elementskit-menu-offcanvas-elements{
+    position:fixed!important;top:0!important;left:auto!important;right:0!important;bottom:auto!important;
+    width:300px!important;max-width:85vw!important;height:100%!important;margin:0!important;
+    transform:translateX(100%)!important;transition:transform .3s ease!important;
+    background:#101820!important;padding:70px 24px 24px!important;overflow-y:auto!important;z-index:99999!important;
+  }
+  .ltk-nav-open #ekit-megamenu-menu-1.elementskit-menu-offcanvas-elements{transform:translateX(0)!important}
+  #ekit-megamenu-menu-1 .elementskit-navbar-nav{display:block!important;width:100%}
+  /* visible hamburger (was white 1px on a light header) */
+  .elementskit-menu-hamburger{padding:8px!important}
+  .elementskit-menu-hamburger .elementskit-menu-hamburger-icon{width:26px!important;height:3px!important;background:#f2792b!important;border-radius:2px;margin:2px 0}
+  /* dropdown submenus: collapsed until tapped, then fully expand */
+  #ekit-megamenu-menu-1 .menu-item-has-children>.elementskit-dropdown{display:none!important}
+  #ekit-megamenu-menu-1 .ltk-sub-open>.elementskit-dropdown{
+    display:block!important;opacity:1!important;visibility:visible!important;
+    max-height:none!important;height:auto!important;position:static!important;
+    box-shadow:none!important;background:transparent!important;padding:0 0 8px 14px!important;
+  }
+  #ekit-megamenu-menu-1 .elementskit-submenu-panel .dropdown-item,
+  #ekit-megamenu-menu-1 .elementskit-dropdown a{background:transparent!important;color:#c9d2da!important}
+  #ekit-megamenu-menu-1 .elementskit-submenu-panel .dropdown-item:hover{color:#f2792b!important}
+}

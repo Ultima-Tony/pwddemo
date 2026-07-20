@@ -26,7 +26,7 @@ $css = [
   'widget-icon-box.min.css','fadeInLeft.min.css','widget-counter.min.css','widget-icon-list.min.css',
   'widget-heading.min.css','swiper.min.css','widget-spacer.min.css','post-1232.css',
   'widget-styles.css','responsive.css','manrope.css','ekiticons.css','metform-ui.css',
-  'widget-social-icons.min.css','apple-webkit.min.css','post-1634.css','site.v6.css',
+  'widget-social-icons.min.css','apple-webkit.min.css','post-1634.css','site.v7.css',
 ];
 ?><!DOCTYPE html>
 <html lang="en-CA">
