@@ -204,3 +204,49 @@ body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.
 .elementor-element-3273ef56 .elementskit-info-box-icon{line-height:1}
 .elementor-element-3273ef56 .elementkit-infobox-icon{font-size:62px!important;line-height:1;color:#f2792b}
 .elementor-element-3273ef56 .elementskit-info-box-icon svg{width:62px;height:62px}
+
+/* ========================================================================
+   FEEDBACK ROUND 3 (verified live via injection)
+   ======================================================================== */
+
+/* ---- Features (34b7221) + Why Choose Us (70aa561b): real 2-column layout ----
+   Elementor left these .e-con-inner blocks flex-direction:column (stacked/overlap)
+   and its per-element rules are 0-3-0, so we match specificity with .elementor-1232
+   and force a row. Also removes the background photo layered behind the Why image. */
+.elementor-1232 .elementor-element-34b7221 > .e-con-inner,
+.elementor-1232 .elementor-element-70aa561b > .e-con-inner{display:flex!important;flex-direction:row!important;flex-wrap:wrap;gap:46px;align-items:center}
+.elementor-1232 .elementor-element-77180351,
+.elementor-1232 .elementor-element-11454317{order:0!important;flex:1 1 360px!important;min-width:0}
+.elementor-1232 .elementor-element-19d10383,
+.elementor-1232 .elementor-element-64123ab9{order:0!important;flex:1 1 420px!important;min-width:0}
+.elementor-1232 .elementor-element-19d10383{flex-direction:column!important;gap:26px}
+.elementor-1232 .elementor-element-11454317{background-image:none!important}
+.elementor-1232 .elementor-element-241161a3{margin-top:0!important}
+.elementor-element-34b7221 img,.elementor-element-70aa561b img{position:static!important;inset:auto!important;transform:none!important;max-width:100%;height:auto;border-radius:14px}
+
+/* ---- Process (228dfaf1): each step as a row, number vertically centred ---- */
+.elementor-1232 .elementor-element-228dfaf1{flex-direction:column!important}
+.elementor-1232 .elementor-element-228dfaf1 > .elementor-element{display:flex!important;flex-direction:row!important;align-items:center!important;gap:26px;max-width:660px;margin:0 auto 6px}
+.elementor-element-228dfaf1 > .elementor-element > .elementor-element:first-child{flex:0 0 64px!important}
+.elementor-element-228dfaf1 .elementor-widget-spacer{display:none}
+.elementor-element-228dfaf1 .elementor-heading-title{font-size:2.4rem;margin:0;color:#fff}
+.elementor-element-228dfaf1 .elementor-icon-box-content,
+.elementor-element-228dfaf1 .elementor-icon-box-title,
+.elementor-element-228dfaf1 .elementor-icon-box-description{text-align:left}
+.elementor-element-228dfaf1 .elementor-icon-box-title span{color:#fff}
+.elementor-element-228dfaf1 .elementor-icon-box-description{color:#dfe8f2}
+
+/* ---- Pricing (525d2512): navy/orange header band -> white "per visit/project" ---- */
+.elementor-element-525d2512 .elementskit-single-pricing{overflow:hidden}
+.elementor-element-525d2512 .elementskit-pricing-header{background:#0E3458;margin:-36px -30px 26px;padding:30px;border-radius:18px 18px 0 0;text-align:center}
+.elementor-element-525d2512 .elementskit-pricing-title{color:#fff}
+.elementor-element-525d2512 .elementskit-pricing-subtitle{color:#c9d9e9;margin:0}
+.elementor-element-525d2512 .ekit-pricing-popular .elementskit-pricing-header{background:#f2792b}
+.elementor-element-525d2512 .period{display:none}
+/* remove ElementsKit's grey "has-tag" pill behind the price */
+.elementor-element-525d2512 .elementskit-pricing-price-wraper,
+.elementor-element-525d2512 .elementskit-pricing-price,
+.elementor-element-525d2512 .elementskit-pricing-tag{background:none!important;background-color:transparent!important;box-shadow:none!important}
+.elementor-element-525d2512 .elementskit-pricing-tag{display:none!important}
+.elementor-element-525d2512 .elementskit-pricing-price{color:#0E3458!important;padding:0!important}
+.elementor-element-525d2512 .elementskit-pricing-price .currency{color:#f2792b!important}
