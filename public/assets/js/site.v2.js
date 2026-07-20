@@ -139,23 +139,43 @@
     var pencil = d.createElement('a');
     pencil.className = 'ltk-pencil';
     pencil.innerHTML = '<span aria-hidden="true">&#9998;</span>';
+    // Force fixed positioning inline so it stays on-screen for tall sections
+    // regardless of any cached stylesheet.
+    pencil.style.position = 'fixed';
     pencil.style.display = 'none';
     d.body.appendChild(pencil);
-    var hideT = null;
-    function show(region) {
-      var marker = region.querySelector(':scope > .ltk-edit') || region.querySelector('.ltk-edit');
-      if (!marker) return;
-      var r = region.getBoundingClientRect();
-      pencil.href = marker.getAttribute('href');
-      pencil.title = 'Edit: ' + (marker.getAttribute('data-label') || 'section');
-      pencil.style.top = (window.scrollY + r.top + 12) + 'px';
-      pencil.style.left = (window.scrollX + r.right - 52) + 'px';
+    var current = null, hideT = null;
+
+    function markerFor(region) {
+      return region.querySelector(':scope > .ltk-edit') || region.querySelector('.ltk-edit');
+    }
+    // Pin the pencil to the hovered section's right edge, vertically at the
+    // cursor, clamped inside both the section and the viewport (below the bar).
+    function place(clientY) {
+      if (!current) return;
+      var r = current.getBoundingClientRect();
+      var vw = window.innerWidth, vh = window.innerHeight;
+      var x = Math.min(r.right, vw) - 56;
+      var top = (typeof clientY === 'number' ? clientY - 20 : r.top + 20);
+      top = Math.max(Math.max(r.top + 10, 54), Math.min(top, r.bottom - 54, vh - 20));
+      pencil.style.left = Math.max(10, x) + 'px';
+      pencil.style.top = top + 'px';
+    }
+    function show(region, clientY) {
+      var m = markerFor(region);
+      if (!m) return;
+      current = region;
+      pencil.href = m.getAttribute('href');
+      pencil.title = 'Edit: ' + (m.getAttribute('data-label') || 'this area');
       pencil.style.display = 'flex';
+      place(clientY);
       if (hideT) { clearTimeout(hideT); hideT = null; }
     }
-    function scheduleHide() { hideT = setTimeout(function () { pencil.style.display = 'none'; }, 250); }
+    function scheduleHide() { hideT = setTimeout(function () { pencil.style.display = 'none'; current = null; }, 200); }
+
     regions.forEach(function (region) {
-      region.addEventListener('mouseenter', function () { show(region); });
+      region.addEventListener('mouseenter', function (e) { show(region, e.clientY); });
+      region.addEventListener('mousemove', function (e) { if (current === region) place(e.clientY); });
       region.addEventListener('mouseleave', scheduleHide);
     });
     pencil.addEventListener('mouseenter', function () { if (hideT) { clearTimeout(hideT); hideT = null; } });

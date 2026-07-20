@@ -27,7 +27,8 @@ $useful = [
 <!-- ============================ FOOTER (elementor-1679) ============================ -->
 <div class="ekit-template-content-markup ekit-template-content-footer ekit-template-content-theme-support">
   <div data-elementor-type="wp-post" data-elementor-id="1679" class="elementor elementor-1679">
-    <div class="elementor-element elementor-element-cdb479e e-flex e-con-boxed e-con e-parent">
+    <div class="elementor-element elementor-element-cdb479e e-flex e-con-boxed e-con e-parent ltk-editable">
+      <?= edit_btn('settings', 'Footer') ?>
       <div class="e-con-inner">
         <div class="elementor-element elementor-element-df1314e e-con-full e-flex e-con e-child">
 
@@ -112,6 +113,6 @@ $useful = [
 </div>
 
 <script src="assets/js/swiper.min.js"></script>
-<script src="assets/js/site.js"></script>
+<script src="assets/js/site.v2.js"></script>
 </body>
 </html>

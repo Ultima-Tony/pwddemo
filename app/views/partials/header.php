@@ -52,7 +52,8 @@ $css = [
 <!-- ============================ HEADER (elementor-1674) ============================ -->
 <div class="ekit-template-content-markup ekit-template-content-header ekit-template-content-theme-support">
   <div data-elementor-type="wp-post" data-elementor-id="1674" class="elementor elementor-1674">
-    <div class="elementor-element elementor-element-f3ad92a e-flex e-con-boxed e-con e-child">
+    <div class="elementor-element elementor-element-f3ad92a e-flex e-con-boxed e-con e-child ltk-editable">
+      <?= edit_btn('settings', 'Header &amp; Logo') ?>
       <div class="e-con-inner">
         <div class="elementor-element elementor-element-66e743f e-con-full e-flex e-con e-child">
           <div class="elementor-element elementor-element-443963a e-con-full e-flex e-con e-child">
