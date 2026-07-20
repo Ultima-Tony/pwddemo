@@ -72,7 +72,7 @@ admin_flash_render();
     <div><label>URL</label><input type="text" name="url" value="<?= e($editing['url']) ?>"></div>
   </div>
   <label>Image path</label><input type="text" name="image" value="<?= e($editing['image']) ?>">
-  <?php if ($editing['image']): ?><img class="thumb" src="<?= e(img($editing['image'])) ?>" style="margin-top:8px;width:110px;height:70px"><?php endif; ?>
+  <?php if ($editing['image']): ?><img class="thumb" src="<?= e(img_url($editing['image'])) ?>" style="margin-top:8px;width:110px;height:70px"><?php endif; ?>
   <label class="muted">…or upload</label><input type="file" name="image_file" accept="image/*">
   <p style="margin-top:12px"><label class="switch"><input type="checkbox" name="is_active" value="1" <?= $editing['is_active'] ? 'checked' : '' ?>> Active (visible)</label></p>
   <p><button class="btn" type="submit">Save</button> <a class="btn sec" href="<?= e(admin_url('items?section=' . $editing['section'])) ?>">Cancel</a></p>
@@ -84,7 +84,7 @@ admin_flash_render();
     <tr><th></th><th>Title</th><th>Sort</th><th>Active</th><th></th></tr>
     <?php foreach (items($section, false) as $it): ?>
     <tr>
-      <td><?php if ($it['image']): ?><img class="thumb" src="<?= e(img($it['image'])) ?>"><?php endif; ?></td>
+      <td><?php if ($it['image']): ?><img class="thumb" src="<?= e(img_url($it['image'])) ?>"><?php endif; ?></td>
       <td><?= $it['title'] ?: '<span class="muted">(untitled)</span>' ?><?php if ($it['subtitle']): ?><div class="muted"><?= e($it['subtitle']) ?></div><?php endif; ?></td>
       <td><?= (int) $it['sort_order'] ?></td>
       <td><?= $it['is_active'] ? '<span class="pill">yes</span>' : '<span class="muted">no</span>' ?></td>

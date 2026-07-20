@@ -41,12 +41,12 @@ admin_flash_render();
     <div class="row">
       <div>
         <label>Image path</label><input type="text" name="image" value="<?= e($b['image']) ?>">
-        <?php if ($b['image']): ?><img class="thumb" src="<?= e(img($b['image'])) ?>" style="margin-top:8px;width:110px;height:70px"><?php endif; ?>
+        <?php if ($b['image']): ?><img class="thumb" src="<?= e(img_url($b['image'])) ?>" style="margin-top:8px;width:110px;height:70px"><?php endif; ?>
         <label class="muted">…or upload</label><input type="file" name="image_file" accept="image/*">
       </div>
       <div>
         <label>Image 2 path</label><input type="text" name="image2" value="<?= e($b['image2']) ?>">
-        <?php if ($b['image2']): ?><img class="thumb" src="<?= e(img($b['image2'])) ?>" style="margin-top:8px;width:110px;height:70px"><?php endif; ?>
+        <?php if ($b['image2']): ?><img class="thumb" src="<?= e(img_url($b['image2'])) ?>" style="margin-top:8px;width:110px;height:70px"><?php endif; ?>
         <label class="muted">…or upload</label><input type="file" name="image2_file" accept="image/*">
       </div>
     </div>

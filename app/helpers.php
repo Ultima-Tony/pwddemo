@@ -61,6 +61,20 @@ function img(?string $path, string $fallback = ''): string
     return ltrim($path, '/');
 }
 
+/**
+ * Root-absolute image URL for contexts WITHOUT <base href="/"> — i.e. the admin
+ * pages, which live at /admin/... A relative path there would resolve against
+ * /admin/. Remote (http/protocol-relative) and data: URIs pass through.
+ */
+function img_url(?string $path, string $fallback = ''): string
+{
+    $p = img($path, $fallback);
+    if ($p === '' || preg_match('#^(https?:)?//#i', $p) || str_starts_with($p, 'data:')) {
+        return $p;
+    }
+    return '/' . ltrim($p, '/');
+}
+
 /** Absolute origin (scheme + host), used for canonical/OG/sitemap. */
 function site_origin(): string
 {

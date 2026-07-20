@@ -80,7 +80,7 @@ body:has(#ltk-adminbar){padding-top:44px}
 .ltk-edit{position:absolute;width:0;height:0;overflow:hidden}
 body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.7);outline-offset:-2px}
 
-.ltk-pencil{position:absolute;z-index:100000;width:40px;height:40px;border-radius:50%;background:#f2792b;color:#fff!important;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3);font-size:18px;transition:transform .12s}
+.ltk-pencil{position:fixed;z-index:100000;width:40px;height:40px;border-radius:50%;background:#f2792b;color:#fff!important;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3);font-size:18px;transition:transform .12s}
 .ltk-pencil:hover{transform:scale(1.1);background:#e06a1f}
 
 /* ========================================================================
@@ -266,3 +266,16 @@ body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.
 .elementor-element-525d2512 .elementskit-pricing-header{background:#1C68B0}
 .elementor-element-525d2512 .ekit-pricing-popular .elementskit-pricing-header{background:#f2792b}
 .elementor-element-525d2512 .ekit-pricing-popular .elementor-absolute .elementor-heading-title{background:#0E3458;box-shadow:0 6px 16px rgba(14,52,88,.45)}
+
+/* ========================================================================
+   FEEDBACK ROUND 5: hero + CTA banner text over photo (verified live)
+   ======================================================================== */
+/* grey text -> white, dark navy heading -> light, accent -> brighter blue */
+.elementor-element-90f95a5 .elementor-icon-list-text,
+.elementor-element-90f95a5 .elementor-widget-text-editor p,
+.elementor-element-276b2e3b .elementor-widget-text-editor p{color:#fff!important;text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.elementor-element-90f95a5 .ekit-heading--title,
+.elementor-element-276b2e3b .ekit-heading--title{color:#eaf3ff!important;text-shadow:0 2px 14px rgba(0,0,0,.55)}
+.elementor-element-90f95a5 .ekit-heading--title span span,
+.elementor-element-276b2e3b .ekit-heading--title span span{color:#5aa9f0!important}
+.elementor-element-90f95a5 .elementor-icon-list-icon svg{fill:#f2792b}

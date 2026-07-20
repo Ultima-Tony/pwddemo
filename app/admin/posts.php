@@ -62,7 +62,7 @@ admin_flash_render();
     <div><label>Publish date</label><input type="text" name="published_at" value="<?= e($editing['published_at'] ? date('Y-m-d', strtotime($editing['published_at'])) : '') ?>" placeholder="YYYY-MM-DD"></div>
   </div>
   <label>Image path</label><input type="text" name="image" value="<?= e($editing['image']) ?>">
-  <?php if ($editing['image']): ?><img class="thumb" src="<?= e(img($editing['image'])) ?>" style="margin-top:8px;width:140px;height:88px"><?php endif; ?>
+  <?php if ($editing['image']): ?><img class="thumb" src="<?= e(img_url($editing['image'])) ?>" style="margin-top:8px;width:140px;height:88px"><?php endif; ?>
   <label class="muted">…or upload</label><input type="file" name="image_file" accept="image/*">
   <p style="margin-top:12px"><label class="switch"><input type="checkbox" name="is_published" value="1" <?= $editing['is_published'] ? 'checked' : '' ?>> Published</label></p>
   <p><button class="btn" type="submit">Save post</button> <a class="btn sec" href="<?= e(admin_url('posts')) ?>">Cancel</a></p>
@@ -73,7 +73,7 @@ admin_flash_render();
     <tr><th></th><th>Title</th><th>Status</th><th>Date</th><th></th></tr>
     <?php foreach (db()->query('SELECT * FROM posts ORDER BY published_at DESC, id DESC') as $p): ?>
     <tr>
-      <td><?php if ($p['image']): ?><img class="thumb" src="<?= e(img($p['image'])) ?>"><?php endif; ?></td>
+      <td><?php if ($p['image']): ?><img class="thumb" src="<?= e(img_url($p['image'])) ?>"><?php endif; ?></td>
       <td><?= e($p['title']) ?><div class="muted">/<?= e($p['slug']) ?></div></td>
       <td><?= $p['is_published'] ? '<span class="pill">published</span>' : '<span class="muted">draft</span>' ?></td>
       <td class="muted"><?= e($p['published_at'] ? date('M j, Y', strtotime($p['published_at'])) : '—') ?></td>
