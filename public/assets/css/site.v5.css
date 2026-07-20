@@ -250,3 +250,19 @@ body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.
 .elementor-element-525d2512 .elementskit-pricing-tag{display:none!important}
 .elementor-element-525d2512 .elementskit-pricing-price{color:#0E3458!important;padding:0!important}
 .elementor-element-525d2512 .elementskit-pricing-price .currency{color:#f2792b!important}
+
+/* ========================================================================
+   FEEDBACK ROUND 4 (verified live at desktop width)
+   ======================================================================== */
+
+/* Features blue box (241161a3) had margin-left:-200px from the template,
+   pulling it over the heading at desktop width. Kill the negative margins. */
+.elementor-1232 .elementor-element-241161a3,
+.elementor-1232 .elementor-element-78940fcb{margin-left:0!important;margin-right:0!important;margin-top:0!important}
+
+/* Pricing: card header band must differ from the navy section background.
+   Non-popular -> brand blue; popular -> orange; "Most Popular" flare -> navy
+   so it stands apart from the orange header. */
+.elementor-element-525d2512 .elementskit-pricing-header{background:#1C68B0}
+.elementor-element-525d2512 .ekit-pricing-popular .elementskit-pricing-header{background:#f2792b}
+.elementor-element-525d2512 .ekit-pricing-popular .elementor-absolute .elementor-heading-title{background:#0E3458;box-shadow:0 6px 16px rgba(14,52,88,.45)}
