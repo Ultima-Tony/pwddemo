@@ -167,3 +167,40 @@ body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.
 #quote .ltk-field input,#quote .ltk-field textarea,#quote .ltk-field select{background:#fff;color:#1c2430}
 #quote .ltk-alert.ok{background:#0f6a35;color:#fff;border-color:#0f6a35}
 #quote .ltk-alert.err{background:#8a1f1f;color:#fff;border-color:#8a1f1f}
+
+/* ========================================================================
+   FEEDBACK ROUND 2
+   ======================================================================== */
+
+/* ---- Features (34b7221): fix column overlap (same as Why Choose Us) ---- */
+.elementor-element-34b7221 > .e-con-inner{display:flex;flex-wrap:wrap;gap:46px;align-items:center}
+.elementor-element-34b7221 .elementor-element-77180351{position:static;flex:1 1 360px;margin:0;min-width:0}
+.elementor-element-34b7221 .elementor-element-19d10383{position:static;flex:1 1 420px;display:flex;flex-direction:column;gap:26px;margin:0;min-width:0}
+.elementor-element-34b7221 img{position:static!important;inset:auto!important;transform:none!important;max-width:100%;height:auto;border-radius:14px}
+/* stop the heading being clipped */
+.elementor-element-34b7221 .elementor-element-77180351 .ekit-heading--title{white-space:normal;overflow:visible}
+
+/* ---- Blue inner cards #1C68B0: text must be white ---- */
+/* Why Choose Us blue card (78940fcb) */
+.elementor-element-78940fcb .elementor-icon-list-text,
+.elementor-element-78940fcb .elementor-icon-box-title span,
+.elementor-element-78940fcb .elementor-icon-box-description{color:#fff!important}
+/* Process "How It Works" blue box (228dfaf1) */
+.elementor-element-228dfaf1 .elementor-heading-title,
+.elementor-element-228dfaf1 .elementor-icon-box-title span,
+.elementor-element-228dfaf1 .elementor-icon-box-description{color:#fff!important}
+.elementor-element-228dfaf1 .elementor-icon svg,
+.elementor-element-228dfaf1 .elementor-icon i{color:#fff;fill:#fff}
+
+/* ---- Counters bar (40bb28c5, dark photo+gradient bg): bright white ---- */
+.elementor-element-40bb28c5 .elementor-counter-number,
+.elementor-element-40bb28c5 .elementor-counter-number-prefix,
+.elementor-element-40bb28c5 .elementor-counter-number-suffix,
+.elementor-element-40bb28c5 .elementor-heading-title,
+.elementor-element-40bb28c5 .elementor-icon-box-title span,
+.elementor-element-40bb28c5 .elementor-icon-box-description{color:#fff!important}
+
+/* ---- Services icons: much larger (3273ef56) ---- */
+.elementor-element-3273ef56 .elementskit-info-box-icon{line-height:1}
+.elementor-element-3273ef56 .elementkit-infobox-icon{font-size:62px!important;line-height:1;color:#f2792b}
+.elementor-element-3273ef56 .elementskit-info-box-icon svg{width:62px;height:62px}
