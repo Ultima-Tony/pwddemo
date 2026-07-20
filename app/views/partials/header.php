@@ -14,7 +14,7 @@ $cur = trim(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '/', '/')
 $seg0 = explode('/', $cur)[0] ?? '';
 $is = fn(string $p): string => ($seg0 === $p || ($p === '' && $seg0 === '')) ? ' active' : '';
 
-$logo = img(setting('logo', 'assets/img/Homi-Light.png'), 'assets/img/Homi-Light.png');
+$logo = img(setting('logo', 'assets/img/logo.svg'), 'assets/img/logo.svg');
 $biz  = setting('site_name', SITE_NAME);
 
 // Stylesheet list (kept faithful to the template so its per-element CSS applies).
@@ -26,7 +26,7 @@ $css = [
   'widget-icon-box.min.css','fadeInLeft.min.css','widget-counter.min.css','widget-icon-list.min.css',
   'widget-heading.min.css','swiper.min.css','widget-spacer.min.css','post-1232.css',
   'widget-styles.css','responsive.css','manrope.css','ekiticons.css','metform-ui.css',
-  'widget-social-icons.min.css','apple-webkit.min.css','post-1634.css','site.css',
+  'widget-social-icons.min.css','apple-webkit.min.css','post-1634.css','site.v2.css',
 ];
 ?><!DOCTYPE html>
 <html lang="en-CA">

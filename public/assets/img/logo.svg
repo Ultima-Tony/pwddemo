@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 92" width="360" height="92" role="img" aria-label="Demo Contracting Ltd">
+  <!-- badge -->
+  <rect x="6" y="12" width="68" height="68" rx="15" fill="#F2792B"/>
+  <!-- house glyph -->
+  <path d="M40 26 L66 48 L59 48 L59 66 L47 66 L47 54 L33 54 L33 66 L21 66 L21 48 L14 48 Z" fill="#ffffff"/>
+  <!-- wordmark -->
+  <text x="92" y="47" font-family="'Manrope','Segoe UI',Arial,sans-serif" font-size="33" font-weight="800" fill="#ffffff" letter-spacing="0.5">DEMO</text>
+  <text x="93" y="72" font-family="'Manrope','Segoe UI',Arial,sans-serif" font-size="15.5" font-weight="700" fill="#F2792B" letter-spacing="4.2">CONTRACTING LTD</text>
+</svg>

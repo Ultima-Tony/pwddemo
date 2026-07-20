@@ -1,7 +1,7 @@
 <?php
 /** Site footer partial (elementor-1679) + scripts. Closes #content, body, html. */
 $biz     = setting('site_name', SITE_NAME);
-$logoD   = img(setting('logo', 'assets/img/Homi-Dark.png'), 'assets/img/Homi-Dark.png');
+$logoD   = img(setting('logo', 'assets/img/logo.svg'), 'assets/img/logo.svg');
 $email   = setting('contact_email', SITE_EMAIL);
 $phone   = setting('contact_phone', '');
 $addr    = trim(setting('contact_address', '') . ', ' . setting('contact_city', '') . ' ' . setting('contact_region', ''), ', ');

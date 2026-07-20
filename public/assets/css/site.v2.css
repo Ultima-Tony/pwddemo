@@ -1,0 +1,169 @@
+/* Demo Contracting Ltd — custom layer on top of the Homi template. */
+
+/* ---- Entrance animations (Elementor's JS normally sets duration/fill) ---- */
+.animated{animation-duration:.8s;animation-fill-mode:both}
+
+/* ---- Skip link ---- */
+.skip-link{position:absolute;left:-9999px}
+.skip-link:focus{left:8px;top:8px;background:#fff;padding:8px 14px;z-index:100000}
+
+/* ---- Mobile offcanvas menu (drives ElementsKit markup without its JS) ---- */
+@media (max-width:1024px){
+  .ekit_menu_responsive_tablet .elementskit-menu-hamburger{display:inline-flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+  .ekit_menu_responsive_tablet .elementskit-menu-hamburger-icon{width:26px;height:2px;background:currentColor;display:block}
+  #ekit-megamenu-menu-1{position:fixed;top:0;right:0;height:100%;width:300px;max-width:85vw;background:#101820;transform:translateX(100%);transition:transform .3s ease;z-index:99999;overflow-y:auto;padding:24px}
+  .ltk-nav-open #ekit-megamenu-menu-1{transform:translateX(0)}
+  #ekit-megamenu-menu-1 .elementskit-navbar-nav{display:block}
+  #ekit-megamenu-menu-1 .elementskit-navbar-nav>li>a{display:flex;justify-content:space-between;align-items:center;padding:12px 0;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+  #ekit-megamenu-menu-1 .elementskit-dropdown{display:none;padding-left:14px}
+  #ekit-megamenu-menu-1 .ltk-sub-open>.elementskit-dropdown{display:block}
+  #ekit-megamenu-menu-1 .elementskit-dropdown a{display:block;padding:8px 0;color:#c9d2da}
+  .elementskit-menu-close{position:absolute;top:12px;right:14px;background:none;border:0;color:#fff;font-size:22px;cursor:pointer}
+  .ekit-nav-menu--overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:.3s;z-index:99998}
+  .ltk-nav-open .ekit-nav-menu--overlay{opacity:1;visibility:visible}
+  body.ltk-noscroll{overflow:hidden}
+}
+@media (min-width:1025px){
+  .elementskit-menu-hamburger,.elementskit-nav-identity-panel,.ekit-nav-menu--overlay{display:none}
+}
+
+/* ---- Newsletter form ---- */
+.ltk-newsletter{display:flex;gap:8px;margin:14px 0;flex-wrap:wrap}
+.ltk-newsletter input{flex:1 1 160px;min-width:0;padding:12px 14px;border:1px solid rgba(255,255,255,.2);border-radius:6px;background:rgba(255,255,255,.06);color:#fff}
+.ltk-newsletter .elementskit-btn{cursor:pointer;border:0}
+
+/* ---- Generic page hero (inner pages) ---- */
+.ltk-page-hero{background:#101820;color:#fff;padding:120px 0 70px;text-align:center}
+.ltk-page-hero h1{font-size:clamp(2rem,4vw,3rem);margin:0 0 10px}
+.ltk-page-hero .ltk-crumb{color:#f2792b;font-weight:600}
+.ltk-page-hero .ltk-crumb a{color:#c9d2da;text-decoration:none}
+.ltk-section{padding:80px 0}
+.ltk-container{max-width:1200px;margin:0 auto;padding:0 20px}
+.ltk-grid{display:grid;gap:30px}
+.ltk-grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.ltk-grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+
+/* ---- Form messages ---- */
+.ltk-alert{padding:14px 18px;border-radius:8px;margin-bottom:18px}
+.ltk-alert.ok{background:#e6f7ec;color:#116a35;border:1px solid #b6e6c6}
+.ltk-alert.err{background:#fdecec;color:#8a1f1f;border:1px solid #f3c3c3}
+.ltk-field{margin-bottom:16px}
+.ltk-field label{display:block;font-weight:600;margin-bottom:6px}
+.ltk-field input,.ltk-field textarea,.ltk-field select{width:100%;padding:12px 14px;border:1px solid #dfe3e8;border-radius:8px;font:inherit}
+.ltk-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+
+/* ---- FAQ accordion (guarantee collapse works even if vendor CSS differs) ---- */
+.elementskit-accordion .collapse{display:none}
+.elementskit-accordion .collapse.show{display:block}
+.elementskit-card .ekit_accordion_active_icon{display:none}
+.elementskit-card.active .ekit_accordion_active_icon{display:inline-block}
+.elementskit-card.active .ekit_accordion_normal_icon{display:none}
+
+/* ---- Video popup lightbox ---- */
+.ltk-video-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100001;display:flex;align-items:center;justify-content:center;padding:20px}
+.ltk-video-box{position:relative;width:min(900px,100%)}
+.ltk-video-frame{position:relative;padding-bottom:56.25%;height:0}
+.ltk-video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border-radius:10px}
+.ltk-video-close{position:absolute;top:-42px;right:0;background:none;border:0;color:#fff;font-size:34px;cursor:pointer;line-height:1}
+
+/* ========================================================================
+   ADMIN EDIT MODE
+   ======================================================================== */
+#ltk-adminbar{position:fixed;top:0;left:0;right:0;height:44px;background:#12181f;color:#fff;display:flex;align-items:center;gap:16px;padding:0 18px;z-index:100002;font:14px/1 system-ui,sans-serif}
+#ltk-adminbar .ltk-ab-brand{font-weight:700;color:#f2792b}
+#ltk-adminbar .ltk-ab-user{opacity:.7;margin-right:auto}
+#ltk-adminbar .ltk-ab-link{color:#fff;text-decoration:none;padding:7px 14px;border:1px solid rgba(255,255,255,.25);border-radius:6px}
+#ltk-adminbar .ltk-ab-link:hover{background:rgba(255,255,255,.12)}
+body:has(#ltk-adminbar){padding-top:44px}
+
+.ltk-editable{position:relative}
+.ltk-edit{position:absolute;width:0;height:0;overflow:hidden}
+body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.7);outline-offset:-2px}
+
+.ltk-pencil{position:absolute;z-index:100000;width:40px;height:40px;border-radius:50%;background:#f2792b;color:#fff!important;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.3);font-size:18px;transition:transform .12s}
+.ltk-pencil:hover{transform:scale(1.1);background:#e06a1f}
+
+/* ========================================================================
+   CLIENT FEEDBACK FIXES
+   Brand: accent #F2792B, navy #0E3458, light-panel #EDF2F8
+   ======================================================================== */
+
+/* ---- 1. Why Choose Us (70aa561b): stop the images overlapping ---- */
+.elementor-element-70aa561b > .e-con-inner{display:flex;flex-wrap:wrap;gap:46px;align-items:center}
+.elementor-element-70aa561b .elementor-element-11454317{position:static;flex:1 1 360px;margin:0}
+.elementor-element-70aa561b .elementor-element-64123ab9{position:static;flex:1 1 400px}
+.elementor-element-70aa561b .elementor-element-6d3e4a1b{display:flex;flex-wrap:wrap;gap:26px;align-items:center;margin-top:22px}
+.elementor-element-70aa561b .elementor-element-6d3e4a1b > *{flex:1 1 220px;min-width:0}
+.elementor-element-70aa561b img{position:static!important;inset:auto!important;transform:none!important;max-width:100%;height:auto;border-radius:14px;box-shadow:0 20px 44px rgba(14,52,88,.14)}
+.elementor-element-70aa561b .elementor-icon-list-items{list-style:none;padding:0;margin:0}
+.elementor-element-70aa561b .elementor-icon-list-item{display:flex;align-items:center;gap:10px;padding:7px 0}
+.elementor-element-70aa561b .elementor-icon-list-icon i{color:#f2792b}
+
+/* ---- 2. White text on the dark navy sections (features 34b7221, faq 4ca18a70, pricing 525d2512) ---- */
+.elementor-element-34b7221 .ekit-heading--title,
+.elementor-element-4ca18a70 .ekit-heading--title,
+.elementor-element-525d2512 .ekit-heading--title{color:#fff}
+.elementor-element-34b7221 .elementor-icon-list-text,
+.elementor-element-4ca18a70 .elementor-icon-list-text,
+.elementor-element-525d2512 .elementor-icon-list-text{color:#fff}
+.elementor-element-34b7221 .elementor-widget-text-editor p,
+.elementor-element-4ca18a70 .elementor-widget-text-editor p,
+.elementor-element-525d2512 .elementor-widget-text-editor p{color:#cdd7e2}
+/* keep the accent spans orange, not white */
+.elementor-element-34b7221 .ekit-heading--title span span,
+.elementor-element-4ca18a70 .ekit-heading--title span span,
+.elementor-element-525d2512 .ekit-heading--title span span{color:#f2792b}
+
+/* Features (34b7221): icon-box text -> white */
+.elementor-element-34b7221 .elementor-icon-box-title span{color:#fff}
+.elementor-element-34b7221 .elementor-icon-box-description{color:#cdd7e2}
+.elementor-element-34b7221 .elementor-icon svg,
+.elementor-element-34b7221 .elementor-icon i{color:#f2792b;fill:#f2792b}
+
+/* FAQ (4ca18a70): left column white; accordion cards become white panels */
+.elementor-element-4ca18a70 .elementor-button{color:#fff}
+.elementor-element-4ca18a70 .elementskit-card{background:#fff;border-radius:12px;margin-bottom:14px;overflow:hidden;border:0;box-shadow:0 8px 22px rgba(0,0,0,.14)}
+.elementor-element-4ca18a70 .ekit-accordion--toggler{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 22px;text-decoration:none;cursor:pointer}
+.elementor-element-4ca18a70 .ekit-accordion-title{color:#0E3458;font-weight:600}
+.elementor-element-4ca18a70 .elementskit-card.active .ekit-accordion-title{color:#f2792b}
+.elementor-element-4ca18a70 .ekit_accordion_icon_group i{color:#f2792b}
+.elementor-element-4ca18a70 .elementskit-card-body{padding:2px 22px 20px;color:#41505f}
+
+/* ---- 3. Pricing (525d2512) — full rework ("Choose a Package") ---- */
+.elementor-element-525d2512 .elementor-element-2d6c982d{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:28px;align-items:stretch;max-width:1120px;margin:44px auto 0;padding:0 6px}
+.elementor-element-525d2512 .elementor-element-2d6c982d > .elementor-element{position:relative;display:flex}
+.elementor-element-525d2512 .elementor-widget-elementskit-pricing,
+.elementor-element-525d2512 .elementskit-pricing,
+.elementor-element-525d2512 .elementor-widget-container,
+.elementor-element-525d2512 .ekit-wid-con{width:100%;display:flex}
+.elementor-element-525d2512 .elementskit-single-pricing{background:#fff;border-radius:18px;padding:36px 30px;width:100%;display:flex;flex-direction:column;box-shadow:0 20px 46px rgba(0,0,0,.22);transition:transform .2s}
+.elementor-element-525d2512 .elementskit-pricing-title{font-size:1.35rem;margin:0 0 6px;color:#0E3458}
+.elementor-element-525d2512 .elementskit-pricing-subtitle{color:#6E6E6E;margin:0 0 20px;font-size:.95rem}
+.elementor-element-525d2512 .elementskit-pricing-price-wraper{margin:0 0 22px;padding-bottom:20px;border-bottom:1px solid #eef1f4}
+.elementor-element-525d2512 .elementskit-pricing-price{display:inline-flex;align-items:flex-start;gap:3px;font-weight:800;color:#0E3458;line-height:1}
+.elementor-element-525d2512 .elementskit-pricing-price .currency{font-size:1.25rem;margin-top:8px;font-weight:700}
+.elementor-element-525d2512 .elementskit-pricing-price > span{font-size:2.7rem}
+.elementor-element-525d2512 .elementskit-pricing-price .period{font-size:.9rem;color:#6E6E6E;font-weight:600;align-self:flex-end;margin-bottom:6px}
+.elementor-element-525d2512 .elementskit-pricing-lists{list-style:none;padding:0;margin:0 0 26px;flex:1 1 auto}
+.elementor-element-525d2512 .elementskit-pricing-lists li{display:flex;align-items:baseline;gap:11px;padding:9px 0;border-bottom:1px solid #f1f4f7;color:#37454f;font-size:.96rem}
+.elementor-element-525d2512 .elementskit-pricing-lists li i{color:#f2792b;font-size:.8rem}
+.elementor-element-525d2512 .elementskit-pricing-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#0E3458;color:#fff;padding:14px 22px;border-radius:10px;font-weight:600;text-decoration:none;margin-top:auto;transition:.2s}
+.elementor-element-525d2512 .elementskit-pricing-btn:hover{background:#f2792b}
+/* popular plan highlight + badge */
+.elementor-element-525d2512 .ekit-pricing-popular .elementskit-single-pricing{border:2px solid #f2792b}
+.elementor-element-525d2512 .ekit-pricing-popular .elementskit-pricing-btn{background:#f2792b}
+.elementor-element-525d2512 .ekit-pricing-popular .elementskit-pricing-btn:hover{background:#0E3458}
+.elementor-element-525d2512 .ekit-pricing-popular .elementor-absolute{position:absolute;top:-15px;left:50%;transform:translateX(-50%);z-index:3;width:auto}
+.elementor-element-525d2512 .ekit-pricing-popular .elementor-absolute .elementor-heading-title{display:inline-block;background:#f2792b;color:#fff;padding:7px 18px;border-radius:20px;font-size:.78rem;font-weight:700;letter-spacing:.03em;white-space:nowrap;box-shadow:0 6px 16px rgba(242,121,43,.4)}
+@media(min-width:900px){.elementor-element-525d2512 .ekit-pricing-popular .elementskit-single-pricing{transform:translateY(-10px)}}
+
+/* ---- 4. Contact CTA / "Get in touch" (#quote): dark band, white type ---- */
+#quote.elementor-element-37f95d8b{background:#0E3458}
+#quote .ekit-heading--title{color:#fff}
+#quote .ekit-heading--title span span{color:#f2792b}
+#quote .elementor-icon-list-text{color:#fff}
+#quote .elementor-widget-text-editor p{color:#cdd7e2}
+#quote .ltk-field label{color:#fff}
+#quote .ltk-field input,#quote .ltk-field textarea,#quote .ltk-field select{background:#fff;color:#1c2430}
+#quote .ltk-alert.ok{background:#0f6a35;color:#fff;border-color:#0f6a35}
+#quote .ltk-alert.err{background:#8a1f1f;color:#fff;border-color:#8a1f1f}
