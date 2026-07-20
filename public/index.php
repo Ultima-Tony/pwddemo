@@ -4,6 +4,10 @@
  * Every non-file request under / lands here (see .htaccess).
  */
 
+// Buffer all output so session_start()/header() can always send headers,
+// even if a stale config.php on the server has a stray trailing byte.
+ob_start();
+
 require_once __DIR__ . '/../app/helpers.php';
 
 // Normalise the request path into clean segments.
@@ -46,6 +50,12 @@ if ($path === 'sitemap.xml') {
     echo '</urlset>';
     exit;
 }
+
+// Start the session BEFORE any page output so is_admin() (admin bar + edit
+// pencils) works reliably on every page — including the homepage, where the
+// large <head> would otherwise push session_start() past headers-sent.
+// (Placed after the robots/sitemap early-exits so bots don't spawn sessions.)
+auth_boot();
 
 // ---- Page routing ---------------------------------------------------------
 $route_id   = null;   // exposed to detail views
