@@ -14,7 +14,7 @@ $cur = trim(parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '/', '/')
 $seg0 = explode('/', $cur)[0] ?? '';
 $is = fn(string $p): string => ($seg0 === $p || ($p === '' && $seg0 === '')) ? ' active' : '';
 
-$logo = img(setting('logo', 'assets/img/logo.svg'), 'assets/img/logo.svg');
+$logo = img(setting('logo', 'assets/img/logo-v2.svg'), 'assets/img/logo-v2.svg');
 $biz  = setting('site_name', SITE_NAME);
 
 // Stylesheet list (kept faithful to the template so its per-element CSS applies).

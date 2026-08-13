@@ -2,7 +2,7 @@
 /** Homepage CTA banner (container 276b2e3b). */
 $b     = block('cta_banner');
 $label = $b['extra'] !== '' ? $b['extra'] : 'Contact Us';
-$bg    = $b['image'] !== '' ? img($b['image']) : '';
+$bg    = $b['bg_image'] !== '' ? img($b['bg_image']) : '';
 $style = $bg !== '' ? ' style="background-image:url(' . "'" . e($bg) . "'" . ');"' : '';
 ?>
 <div class="elementor-element elementor-element-276b2e3b e-flex e-con-boxed e-con e-parent ltk-editable" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"<?= $style ?>>

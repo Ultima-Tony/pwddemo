@@ -154,7 +154,7 @@ function block(string $key): array
     $stmt->execute([$key]);
     $row = $stmt->fetch() ?: [];
     $defaults = ['block_key' => $key, 'label' => '', 'eyebrow' => '', 'heading' => '',
-        'body' => '', 'image' => '', 'image2' => '', 'extra' => ''];
+        'body' => '', 'image' => '', 'image2' => '', 'extra' => '', 'bg_image' => ''];
     return $cache[$key] = array_merge($defaults, $row);
 }
 

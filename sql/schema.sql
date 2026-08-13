@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS content_blocks (
     image      VARCHAR(255) NULL,
     image2     VARCHAR(255) NULL,
     extra      TEXT         NULL,
+    bg_image   VARCHAR(255) NULL,
     PRIMARY KEY (id),
     UNIQUE KEY uq_block_key (block_key)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -130,7 +131,7 @@ SET foreign_key_checks = 1;
 INSERT INTO settings (setting_key, setting_value, label, input_type, sort_order) VALUES
 ('site_name',        'Demo Contracting Ltd', 'Business name', 'text', 10),
 ('tagline',          'Contracting & Home Improvement', 'Tagline', 'text', 20),
-('logo',             'assets/img/logo.svg', 'Logo image path', 'text', 30),
+('logo',             'assets/img/logo-v2.svg', 'Logo image path', 'text', 30),
 ('meta_description', 'Demo Contracting Ltd delivers expert renovations, additions, roofing and remodeling across Saskatchewan. Quality craftsmanship, on time and on budget.', 'Default meta description', 'textarea', 40),
 ('og_image',         'assets/img/hero-home.jpg', 'Social share image', 'text', 50),
 ('contact_phone',    '306-555-0142', 'Phone', 'tel', 60),
@@ -197,6 +198,15 @@ INSERT INTO content_blocks (block_key, label, eyebrow, heading, body, image, ima
 ('blog', 'Blog section heading', 'From the Blog',
  'Tips, Guides and News to Help You <span><span>Plan Your Project.</span></span>',
  'Insights from our crew on renovations, materials and maintenance.', '', '', '');
+
+-- counters has no heading; this block exists only to make its background editable
+INSERT INTO content_blocks (block_key, label) VALUES ('counters', 'Counters / stats bar');
+
+-- editable section background images (override the stylesheet backgrounds)
+UPDATE content_blocks SET bg_image='assets/img/bg/home-improvement.jpg'                                  WHERE block_key='hero';
+UPDATE content_blocks SET bg_image='assets/img/bg/diy-home-improvement-paint-e1750317921377.jpg'         WHERE block_key='counters';
+UPDATE content_blocks SET bg_image='assets/img/cta-bg.jpg'                                               WHERE block_key='cta_banner';
+-- contact_cta left blank so it keeps its solid navy background; set an image to override.
 
 -- ---- items: hero_tags (hero service pills) --------------------------------
 INSERT INTO items (section, title, sort_order) VALUES

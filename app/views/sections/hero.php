@@ -8,7 +8,7 @@ $imgs  = array_values(array_filter([$b['image'], $b['image2'], $b['image']]));
 $stat = null;
 foreach (items('counters') as $c) { if (trim($c['subtitle']) === '%') { $stat = $c; break; } }
 ?>
-<div class="elementor-element elementor-element-90f95a5 e-flex e-con-boxed e-con e-child ltk-editable" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+<div class="elementor-element elementor-element-90f95a5 e-flex e-con-boxed e-con e-child ltk-editable" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"<?= $b['bg_image'] ? ' style="background-image:url(\'' . e(img($b['bg_image'])) . '\')"' : '' ?>>
   <?= edit_btn('blocks?block=hero', 'Hero') ?>
   <div class="e-con-inner">
     <div class="elementor-element elementor-element-1180020 e-con-full e-flex e-con e-child">

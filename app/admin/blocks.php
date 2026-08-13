@@ -11,10 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cur = block($key);
         $image  = admin_handle_upload('image_file', $_POST['image'] ?? $cur['image']);
         $image2 = admin_handle_upload('image2_file', $_POST['image2'] ?? $cur['image2']);
-        $stmt = db()->prepare('UPDATE content_blocks SET eyebrow=?, heading=?, body=?, image=?, image2=?, extra=? WHERE block_key=?');
+        $bg     = admin_handle_upload('bg_file', $_POST['bg_image'] ?? $cur['bg_image']);
+        $stmt = db()->prepare('UPDATE content_blocks SET eyebrow=?, heading=?, body=?, image=?, image2=?, extra=?, bg_image=? WHERE block_key=?');
         $stmt->execute([
             trim($_POST['eyebrow'] ?? ''), trim($_POST['heading'] ?? ''), trim($_POST['body'] ?? ''),
-            $image, $image2, trim($_POST['extra'] ?? ''), $key,
+            $image, $image2, trim($_POST['extra'] ?? ''), $bg, $key,
         ]);
         $uerr = admin_upload_error();
         admin_flash($uerr ? 'Block saved, but the image upload failed: ' . $uerr : 'Block “' . $key . '” saved.', $uerr ? 'err' : 'ok');
@@ -52,6 +53,10 @@ admin_flash_render();
       </div>
     </div>
     <label>Extra <span class="muted">(badge / button label / misc)</span></label><input type="text" name="extra" value="<?= e($b['extra']) ?>">
+    <label>Background image <span class="muted">(section background; leave blank for none)</span></label>
+    <input type="text" name="bg_image" value="<?= e($b['bg_image']) ?>">
+    <?php if ($b['bg_image']): ?><img class="thumb" src="<?= e(img_url($b['bg_image'])) ?>" style="margin-top:8px;width:160px;height:70px"><?php endif; ?>
+    <label class="muted">…or upload</label><input type="file" name="bg_file" accept="image/*">
     <p style="margin-top:16px"><button class="btn" type="submit">Save block</button></p>
   </form>
 </details>
