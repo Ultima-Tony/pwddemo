@@ -26,11 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($id) {
             $stmt = db()->prepare('UPDATE items SET section=?,title=?,subtitle=?,body=?,image=?,icon=?,value=?,url=?,sort_order=?,is_active=? WHERE id=?');
             $stmt->execute([...$data, $id]);
-            admin_flash('Item updated.');
+            $uerr = admin_upload_error();
+            admin_flash($uerr ? 'Item saved, but the image upload failed: ' . $uerr : 'Item updated.', $uerr ? 'err' : 'ok');
         } else {
             $stmt = db()->prepare('INSERT INTO items (section,title,subtitle,body,image,icon,value,url,sort_order,is_active) VALUES (?,?,?,?,?,?,?,?,?,?)');
             $stmt->execute($data);
-            admin_flash('Item created.');
+            $uerr = admin_upload_error();
+            admin_flash($uerr ? 'Item created, but the image upload failed: ' . $uerr : 'Item created.', $uerr ? 'err' : 'ok');
         }
         $section = $data[0];
     }

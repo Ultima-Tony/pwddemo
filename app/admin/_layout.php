@@ -102,28 +102,64 @@ function admin_flash_render(): void
     }
 }
 
-/** Handle an uploaded image field; returns stored relative path or existing value. */
+/** Human-readable message for a PHP UPLOAD_ERR_* code. */
+function upload_err_message(int $code): string
+{
+    switch ($code) {
+        case UPLOAD_ERR_INI_SIZE:
+        case UPLOAD_ERR_FORM_SIZE:
+            return 'the image is larger than the server allows (upload_max_filesize / post_max_size). Resize it or raise the limit.';
+        case UPLOAD_ERR_PARTIAL:   return 'the upload was interrupted — please try again.';
+        case UPLOAD_ERR_NO_TMP_DIR: return 'the server has no temp folder configured for uploads.';
+        case UPLOAD_ERR_CANT_WRITE: return 'the server could not write the upload to disk.';
+        case UPLOAD_ERR_EXTENSION:  return 'a PHP extension blocked the upload.';
+        default:                    return 'unknown upload error (code ' . $code . ').';
+    }
+}
+
+/** The last upload error set by admin_handle_upload (and clears it). */
+function admin_upload_error(): ?string
+{
+    $e = $GLOBALS['ltk_upload_err'] ?? null;
+    $GLOBALS['ltk_upload_err'] = null;
+    return $e;
+}
+
+/**
+ * Handle an uploaded image field; returns stored relative path or existing value.
+ * On failure it records a message (see admin_upload_error()) so the caller can
+ * surface it instead of silently keeping the old image.
+ */
 function admin_handle_upload(string $field, string $existing = ''): string
 {
+    // No file chosen — keep the existing value, no error.
     if (empty($_FILES[$field]) || ($_FILES[$field]['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
         return $existing;
     }
     $f = $_FILES[$field];
     if ($f['error'] !== UPLOAD_ERR_OK) {
+        $GLOBALS['ltk_upload_err'] = upload_err_message((int) $f['error']);
         return $existing;
     }
     $ext = strtolower(pathinfo($f['name'], PATHINFO_EXTENSION));
     $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
     if (!in_array($ext, $allowed, true)) {
+        $GLOBALS['ltk_upload_err'] = 'unsupported file type ".' . $ext . '" — use JPG, PNG, WEBP, GIF or SVG.';
         return $existing;
     }
-    if (!is_dir(UPLOAD_DIR)) {
-        @mkdir(UPLOAD_DIR, 0755, true);
+    if (!is_dir(UPLOAD_DIR) && !@mkdir(UPLOAD_DIR, 0775, true) && !is_dir(UPLOAD_DIR)) {
+        $GLOBALS['ltk_upload_err'] = 'the uploads folder is missing and could not be created. Create "public/' . UPLOAD_URL . '/" on the server and make it writable (chmod 775).';
+        return $existing;
+    }
+    if (!is_writable(UPLOAD_DIR)) {
+        $GLOBALS['ltk_upload_err'] = 'the uploads folder is not writable. chmod "public/' . UPLOAD_URL . '/" to 775 (or 777).';
+        return $existing;
     }
     $name = date('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.' . $ext;
     $dest = rtrim(UPLOAD_DIR, '/\\') . '/' . $name;
     if (move_uploaded_file($f['tmp_name'], $dest)) {
         return rtrim(UPLOAD_URL, '/') . '/' . $name;
     }
+    $GLOBALS['ltk_upload_err'] = 'the server rejected the file write. Check folder permissions on "public/' . UPLOAD_URL . '/".';
     return $existing;
 }

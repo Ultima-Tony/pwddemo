@@ -16,7 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             trim($_POST['eyebrow'] ?? ''), trim($_POST['heading'] ?? ''), trim($_POST['body'] ?? ''),
             $image, $image2, trim($_POST['extra'] ?? ''), $key,
         ]);
-        admin_flash('Block “' . $key . '” saved.');
+        $uerr = admin_upload_error();
+        admin_flash($uerr ? 'Block saved, but the image upload failed: ' . $uerr : 'Block “' . $key . '” saved.', $uerr ? 'err' : 'ok');
     }
     header('Location: ' . admin_url('blocks' . ($focus ? '?block=' . $focus : '')));
     return;

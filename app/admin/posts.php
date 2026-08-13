@@ -25,10 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         if ($id) {
             db()->prepare('UPDATE posts SET slug=?,title=?,excerpt=?,body=?,image=?,author=?,is_published=?,published_at=? WHERE id=?')->execute([...$fields, $id]);
-            admin_flash('Post updated.');
+            $uerr = admin_upload_error();
+            admin_flash($uerr ? 'Post saved, but the image upload failed: ' . $uerr : 'Post updated.', $uerr ? 'err' : 'ok');
         } else {
             db()->prepare('INSERT INTO posts (slug,title,excerpt,body,image,author,is_published,published_at) VALUES (?,?,?,?,?,?,?,?)')->execute($fields);
-            admin_flash('Post created.');
+            $uerr = admin_upload_error();
+            admin_flash($uerr ? 'Post created, but the image upload failed: ' . $uerr : 'Post created.', $uerr ? 'err' : 'ok');
         }
     } catch (PDOException $e) {
         admin_flash('Could not save — is the slug unique? (' . e($slug) . ')', 'err');
