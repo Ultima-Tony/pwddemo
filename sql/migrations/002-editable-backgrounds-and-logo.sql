@@ -16,4 +16,4 @@ UPDATE content_blocks SET bg_image = 'assets/img/cta-bg.jpg'                    
 -- (contact_cta left blank so it keeps its solid navy panel; set an image there to override it.)
 
 -- 4) Switch to the outlined logo (readable on the white header bar).
-UPDATE settings SET setting_value = 'assets/img/logo-v2.svg' WHERE setting_key = 'logo';
+UPDATE settings SET setting_value = 'assets/img/logo-v3.svg' WHERE setting_key = 'logo';

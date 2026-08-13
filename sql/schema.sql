@@ -131,7 +131,7 @@ SET foreign_key_checks = 1;
 INSERT INTO settings (setting_key, setting_value, label, input_type, sort_order) VALUES
 ('site_name',        'Demo Contracting Ltd', 'Business name', 'text', 10),
 ('tagline',          'Contracting & Home Improvement', 'Tagline', 'text', 20),
-('logo',             'assets/img/logo-v2.svg', 'Logo image path', 'text', 30),
+('logo',             'assets/img/logo-v3.svg', 'Logo image path', 'text', 30),
 ('meta_description', 'Demo Contracting Ltd delivers expert renovations, additions, roofing and remodeling across Saskatchewan. Quality craftsmanship, on time and on budget.', 'Default meta description', 'textarea', 40),
 ('og_image',         'assets/img/hero-home.jpg', 'Social share image', 'text', 50),
 ('contact_phone',    '306-555-0142', 'Phone', 'tel', 60),
