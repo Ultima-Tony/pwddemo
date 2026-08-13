@@ -4,7 +4,7 @@ $stats  = items('counters');
 $cb     = block('counters');
 $delays = [0, 200, 400, 600];
 ?>
-<div class="elementor-element elementor-element-40bb28c5 e-flex e-con-boxed e-con e-parent ltk-editable" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"<?= $cb['bg_image'] ? ' style="background-image:url(\'' . e(img($cb['bg_image'])) . '\')"' : '' ?>>
+<div class="elementor-element elementor-element-40bb28c5 e-flex e-con-boxed e-con e-parent ltk-editable" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="background-image:<?= $cb['bg_image'] ? "url('" . e(img($cb['bg_image'])) . "')" : 'none' ?>">
   <?= edit_btn('items?section=counters', 'Stats') ?>
   <div class="e-con-inner">
     <div class="elementor-element elementor-element-42542c89 e-con-full e-flex e-con e-child">

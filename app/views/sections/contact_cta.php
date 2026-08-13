@@ -4,7 +4,7 @@ $b        = block('contact_cta');
 $services = items('services');
 $q        = $quote_result ?? null; // set when the contact page renders this after a POST
 ?>
-<div class="elementor-element elementor-element-37f95d8b e-flex e-con-boxed e-con e-parent ltk-editable" id="quote" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}"<?= $b['bg_image'] ? ' style="background-image:url(\'' . e(img($b['bg_image'])) . '\');background-size:cover;background-position:center"' : '' ?>>
+<div class="elementor-element elementor-element-37f95d8b e-flex e-con-boxed e-con e-parent ltk-editable" id="quote" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}" style="background-image:<?= $b['bg_image'] ? "url('" . e(img($b['bg_image'])) . "');background-size:cover;background-position:center" : 'none' ?>">
   <?= edit_btn('blocks?block=contact_cta', 'Contact CTA') ?>
   <div class="e-con-inner">
     <div class="elementor-element elementor-element-6b7f6a40 e-con-full e-flex e-con e-child animated fadeInLeft">

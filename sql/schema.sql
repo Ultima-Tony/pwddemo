@@ -202,12 +202,6 @@ INSERT INTO content_blocks (block_key, label, eyebrow, heading, body, image, ima
 -- counters has no heading; this block exists only to make its background editable
 INSERT INTO content_blocks (block_key, label) VALUES ('counters', 'Counters / stats bar');
 
--- editable section background images (override the stylesheet backgrounds)
-UPDATE content_blocks SET bg_image='assets/img/bg/home-improvement.jpg'                                  WHERE block_key='hero';
-UPDATE content_blocks SET bg_image='assets/img/bg/diy-home-improvement-paint-e1750317921377.jpg'         WHERE block_key='counters';
-UPDATE content_blocks SET bg_image='assets/img/cta-bg.jpg'                                               WHERE block_key='cta_banner';
--- contact_cta left blank so it keeps its solid navy background; set an image to override.
-
 -- ---- items: hero_tags (hero service pills) --------------------------------
 INSERT INTO items (section, title, sort_order) VALUES
 ('hero_tags', 'Renovations', 10),
@@ -320,3 +314,12 @@ INSERT INTO sections (section_key, label, sort_order, is_enabled) VALUES
 ('faq',         'FAQ',             120, 1),
 ('contact_cta', 'Contact CTA',     130, 1),
 ('blog',        'Latest Blog',     140, 1);
+
+-- ---------------------------------------------------------------------------
+--  Customizable images start BLANK — replace them all in the admin.
+--  (The logo is kept as a functional placeholder; every other image is empty.)
+-- ---------------------------------------------------------------------------
+UPDATE content_blocks SET image = '', image2 = '', bg_image = '';
+UPDATE items          SET image = '';
+UPDATE posts          SET image = '';
+UPDATE settings       SET setting_value = '' WHERE setting_key = 'og_image';

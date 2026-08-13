@@ -41,10 +41,15 @@ function admin_url(string $path = ''): string
     return '/' . $dir . ($path !== '' ? '/' . $path : '');
 }
 
+/** Light-grey inline placeholder used when an image field is empty. */
+const IMG_PLACEHOLDER = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='600'%20height='400'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%23e9edf1'/%3E%3C/svg%3E";
+
 /**
  * Resolve an asset/DB-image path for output. Kept RELATIVE (no leading slash)
  * so <base href="/"> resolves it correctly at any URL depth. Absolute URLs
  * (http/https, protocol-relative) and data: URIs pass through untouched.
+ * Empty paths return a neutral placeholder so an <img> never renders broken
+ * (or, with an empty src, re-requests the page).
  */
 function img(?string $path, string $fallback = ''): string
 {
@@ -53,7 +58,7 @@ function img(?string $path, string $fallback = ''): string
         $path = $fallback;
     }
     if ($path === '') {
-        return '';
+        return IMG_PLACEHOLDER;
     }
     if (preg_match('#^(https?:)?//#i', $path) || str_starts_with($path, 'data:')) {
         return $path;

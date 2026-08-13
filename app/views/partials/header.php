@@ -19,12 +19,12 @@ $biz  = setting('site_name', SITE_NAME);
 
 // Stylesheet list (kept faithful to the template so its per-element CSS applies).
 $css = [
-  'core.css','header.css','footer.css','all.min.css','v4-shims.min.css',
+  'core.css','header.css','footer-v2.css','all.min.css','v4-shims.min.css',
   'extra.css','alerts.css','text.css','reset.css','base.css',
   'layout.css','globals.css','anim-up.css','anim-float.css',
   'media.css','media2.css','w-image.css',
   'w-iconbox.css','anim-left.css','w-counter.css','w-iconlist.css',
-  'w-heading.css','swiper.min.css','w-spacer.css','home.css',
+  'w-heading.css','swiper.min.css','w-spacer.css','home-v2.css',
   'widgets.css','widgets-rwd.css','manrope.css','icons.css','form-ui.css',
   'w-social.css','webkit.css','form.css','site.v8.css',
 ];
