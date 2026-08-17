@@ -150,12 +150,14 @@ body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.
 .elementor-element-525d2512 .elementskit-pricing-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#0E3458;color:#fff;padding:14px 22px;border-radius:10px;font-weight:600;text-decoration:none;margin-top:auto;transition:.2s}
 .elementor-element-525d2512 .elementskit-pricing-btn:hover{background:#f2792b}
 /* popular plan highlight + badge */
-.elementor-element-525d2512 .ekit-pricing-popular .elementskit-single-pricing{border:0;box-shadow:0 24px 50px rgba(0,0,0,.30)}
+.elementor-element-525d2512 .ekit-pricing-popular .elementskit-single-pricing{border:0;box-shadow:0 20px 46px rgba(0,0,0,.22)}
 .elementor-element-525d2512 .ekit-pricing-popular .elementskit-pricing-btn{background:#f2792b}
 .elementor-element-525d2512 .ekit-pricing-popular .elementskit-pricing-btn:hover{background:#0E3458}
 .elementor-element-525d2512 .ekit-pricing-popular .elementor-absolute{position:absolute;top:-15px;left:50%;transform:translateX(-50%);z-index:3;width:auto}
 .elementor-element-525d2512 .ekit-pricing-popular .elementor-absolute .elementor-heading-title{display:inline-block;background:#f2792b;color:#fff;padding:7px 18px;border-radius:20px;font-size:.78rem;font-weight:700;letter-spacing:.03em;white-space:nowrap;box-shadow:0 6px 16px rgba(242,121,43,.4)}
-@media(min-width:900px){.elementor-element-525d2512 .ekit-pricing-popular .elementskit-single-pricing{transform:translateY(-10px)}}
+/* (removed the popular-card translateY lift — it left a navy gap at the bottom
+   and clipped the header's rounded top corners; the orange header + badge are
+   emphasis enough) */
 
 /* ---- 4. Contact CTA / "Get in touch" (#quote): dark band, white type ---- */
 #quote.elementor-element-37f95d8b{background:#0E3458}
