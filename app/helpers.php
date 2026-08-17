@@ -352,8 +352,15 @@ function seo_tags(array $o = []): string
     $desc  = $o['description'] ?? setting('meta_description', 'Professional contracting and home improvement services.');
     $canon = abs_url($o['path'] ?? '');
     $type  = $o['type'] ?? 'website';
-    $imgP  = $o['image'] ?? setting('og_image', '');
-    $img   = $imgP !== '' ? (preg_match('#^https?://#i', $imgP) ? $imgP : site_origin() . '/' . ltrim(img($imgP), '/')) : '';
+    // Share image: page-specific if given, else the site default (og_image setting).
+    $imgP  = !empty($o['image']) ? $o['image'] : setting('og_image', '');
+    $img   = '';
+    if ($imgP !== '') {
+        $img = preg_match('#^https?://#i', $imgP) ? $imgP : site_origin() . '/' . ltrim(img($imgP), '/');
+    }
+    $ext     = strtolower(pathinfo(parse_url($img, PHP_URL_PATH) ?? '', PATHINFO_EXTENSION));
+    $imgType = ['png' => 'image/png', 'jpg' => 'image/jpeg', 'jpeg' => 'image/jpeg',
+                'webp' => 'image/webp', 'gif' => 'image/gif', 'svg' => 'image/svg+xml'][$ext] ?? '';
 
     $h  = '<title>' . e($title) . "</title>\n";
     $h .= '<meta name="description" content="' . e($desc) . "\">\n";
@@ -363,9 +370,21 @@ function seo_tags(array $o = []): string
     $h .= '<meta property="og:description" content="' . e($desc) . "\">\n";
     $h .= '<meta property="og:type" content="' . e($type) . "\">\n";
     $h .= '<meta property="og:url" content="' . e($canon) . "\">\n";
+    $h .= '<meta name="twitter:title" content="' . e($title) . "\">\n";
+    $h .= '<meta name="twitter:description" content="' . e($desc) . "\">\n";
     if ($img) {
         $h .= '<meta property="og:image" content="' . e($img) . "\">\n";
+        $h .= '<meta property="og:image:secure_url" content="' . e($img) . "\">\n";
+        if ($imgType) {
+            $h .= '<meta property="og:image:type" content="' . $imgType . "\">\n";
+        }
+        $h .= "<meta property=\"og:image:width\" content=\"1200\">\n";
+        $h .= "<meta property=\"og:image:height\" content=\"630\">\n";
+        $h .= '<meta property="og:image:alt" content="' . e($site) . "\">\n";
         $h .= "<meta name=\"twitter:card\" content=\"summary_large_image\">\n";
+        $h .= '<meta name="twitter:image" content="' . e($img) . "\">\n";
+    } else {
+        $h .= "<meta name=\"twitter:card\" content=\"summary\">\n";
     }
     return $h;
 }

@@ -242,7 +242,7 @@ body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.
 .elementor-element-525d2512 .elementskit-single-pricing{overflow:hidden}
 .elementor-element-525d2512 .elementskit-pricing-header{background:#1e1e22;margin:-36px -30px 26px;padding:30px;border-radius:18px 18px 0 0;text-align:center}
 .elementor-element-525d2512 .elementskit-pricing-title{color:#fff}
-.elementor-element-525d2512 .elementskit-pricing-subtitle{color:#c9d9e9;margin:0}
+.elementor-element-525d2512 .elementskit-pricing-subtitle{color:#ffffff!important;opacity:.95;margin:0}
 .elementor-element-525d2512 .ekit-pricing-popular .elementskit-pricing-header{background:#0ca678}
 .elementor-element-525d2512 .period{display:none}
 /* remove ElementsKit's grey "has-tag" pill behind the price */
@@ -341,3 +341,11 @@ body:has(#ltk-adminbar) .ltk-editable:hover{outline:2px dashed rgba(242,121,43,.
 .elementor-element-3273ef56 .elementor-element-19a9e092{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))!important;gap:28px!important;max-width:1160px;margin:40px auto 0}
 .elementor-element-3273ef56 .elementor-element-19a9e092 > .elementor-element{margin:0!important;width:auto!important}
 .elementor-element-3273ef56 .elementskit-infobox{background:#fff!important;border:1px solid #eef1f4;border-radius:16px;box-shadow:0 12px 34px rgba(0,0,0,.07)!important;padding:40px 30px!important;height:100%}
+
+/* ========================================================================
+   Team "Meet the Team" (5f631e94): contained member cards (match services)
+   ======================================================================== */
+.elementor-element-5f631e94 .elementor-element-718f7bbf{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))!important;gap:28px!important;max-width:1100px;margin:40px auto 0}
+.elementor-element-5f631e94 .elementor-element-718f7bbf > .elementor-element{margin:0!important;width:auto!important;background:#fff!important;border:1px solid #eef1f4;border-radius:16px;box-shadow:0 12px 34px rgba(0,0,0,.07)!important;overflow:hidden}
+.elementor-element-5f631e94 .profile-image-card,.elementor-element-5f631e94 .profile-image-card img{width:100%!important;display:block}
+.elementor-element-5f631e94 .elementor-element-718f7bbf .elementor-widget-icon-box{padding:14px 14px 22px!important}
