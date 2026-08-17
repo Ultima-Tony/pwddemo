@@ -26,7 +26,7 @@ $css = [
   'w-iconbox.css','anim-left.css','w-counter.css','w-iconlist.css',
   'w-heading.css','swiper.min.css','w-spacer.css','home-v2.css',
   'widgets.css','widgets-rwd.css','manrope.css','icons.css','form-ui.css',
-  'w-social.css','webkit.css','form.css','site.v8.css',
+  'w-social.css','webkit.css','form.css','site.v10.css',
 ];
 ?><!DOCTYPE html>
 <html lang="en-CA">
