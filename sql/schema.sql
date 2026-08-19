@@ -323,4 +323,4 @@ UPDATE content_blocks SET image = '', image2 = '', bg_image = '';
 UPDATE items          SET image = '';
 UPDATE posts          SET image = '';
 -- keep a branded social-share card as the default OG image
-UPDATE settings       SET setting_value = 'assets/img/og-image.svg' WHERE setting_key = 'og_image';
+UPDATE settings       SET setting_value = 'assets/img/og-image.png' WHERE setting_key = 'og_image';

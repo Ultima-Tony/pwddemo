@@ -1,6 +1,6 @@
 -- 004-social-share-image.sql
--- Set a branded social-share (Open Graph) image so links show a good preview
--- when texted or posted in Discord/Slack/Facebook/etc. Safe to re-run.
--- (Swap to assets/img/og-image.png after generating it with og-card.html for
---  guaranteed image thumbnails on Discord/iMessage.)
-UPDATE settings SET setting_value = 'assets/img/og-image.svg' WHERE setting_key = 'og_image';
+-- Point the Open Graph image at the branded 1200x630 PNG card so links show a
+-- real image preview when texted or posted in Discord/iMessage/Slack/Facebook.
+-- (Also repairs the old og_image, which pointed at the deleted hero-home.jpg.)
+-- Safe to re-run.
+UPDATE settings SET setting_value = 'assets/img/og-image.png' WHERE setting_key = 'og_image';
